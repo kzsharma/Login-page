@@ -1,5 +1,6 @@
 import React from 'react'
 import "./signUp.css"
+import { Link } from 'react-router-dom'
 function SignUp() {
     return (
         <>
@@ -45,7 +46,7 @@ function SignUp() {
                                 <input type='password' required />
                                 <label for="">confirm password</label>
                             </div>
-                            <button className='signup-button'>Sign Up</button>
+                            <Link to="/" className='signup-button' > <button className='signup-button' >Sign Up</button></Link>
                             
                         </div>
                        
