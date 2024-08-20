@@ -28,25 +28,25 @@ function SignUp() {
 
 
                                 <input type='email'  required />
-                                <label for="">Email</label>
+                                <label >Email</label>
                             </div>
                             <div className="inputbox">
 
 
                                 <input type='tel'  required />
-                                <label for="">Mobile No.</label>
+                                <label >Mobile No.</label>
                             </div>
                             <div className="inputbox">
 
                                 <input type='password'  required />
-                                <label for=""> new password</label>
+                                <label > new password</label>
                             </div>
                             <div className="inputbox">
 
                                 <input type='password' required />
-                                <label for="">confirm password</label>
+                                <label >confirm password</label>
                             </div>
-                            <Link to="/" className='signup-button' > <button className='signup-button' >Sign Up</button></Link>
+                            <a href="#" className='signup-button' > <button className='signup-button' >Sign Up</button></a>
                             
                         </div>
                        
