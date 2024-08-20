@@ -7,7 +7,7 @@ function Login() {
 
             <div className="form-box">
                 <div className="form-value">
-                    <form >
+                    <form>
                         <div>
                             <h2>Login</h2>
                             <div className="inputbox">

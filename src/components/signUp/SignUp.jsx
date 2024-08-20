@@ -20,8 +20,7 @@ function SignUp() {
         const handleSubmit = e =>
             {
                 e.preventDefault();
-                console.log("hi")
-                  
+                console.log("hi")     
             }
             const handleNumber = e=>{
                 setNumber(e.target.value)
@@ -90,6 +89,7 @@ function SignUp() {
                         </div>
                     </form>
                 </div>
+                {cpass}
             </div>
         </>
     )
