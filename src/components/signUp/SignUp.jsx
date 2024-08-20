@@ -47,7 +47,6 @@ function SignUp() {
               };
               const handlePass = e =>{
                 setCpass(e.target.value)
-
                 if(cpass===pass)
                 {
                     setFormValid(true)
@@ -58,7 +57,6 @@ function SignUp() {
               }
     return (
         <>
-
             <div className='signup-1'>
                 <div className='box'>
                     <h2 className='heading'>Sign Up</h2>
