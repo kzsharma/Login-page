@@ -11,7 +11,7 @@ function Login() {
                         <div>
                             <h2>Login</h2>
                             <div className="inputbox">
-
+                                        
                                 <input type="email" required />
                                 <label >Email</label>
                             </div>
