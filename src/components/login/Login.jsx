@@ -11,20 +11,15 @@ function Login() {
                         <div>
                             <h2>Login</h2>
                             <div className="inputbox">
-                                        
                                 <input type="email" required />
                                 <label >Email</label>
                             </div>
                             <div className="inputbox">
-
                                 <input type="password" required />
-                                <label >Password</label>
+                                <label>Password</label>
                             </div>
                             <div className="forget" >
-                                <label  >
-                               
-                                <input type="checkbox" />Remember Me
-                                    <Link to="#">Forget Password</Link></label>
+                                <label><input type="checkbox" />Remember Me <Link to="#">Forget Password</Link></label>
                             </div>
                             <button className='login-button'>Log in</button>
                             <div className="register">
