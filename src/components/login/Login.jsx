@@ -2,20 +2,19 @@ import React from 'react'
 import "./login.css"
 import { Link } from 'react-router-dom'
 function Login() {
-    return (
+    return(
         <>
-
-            <div className="form-box">
+             <div className="form-box">
                 <div className="form-value">
                     <form>
                         <div>
                             <h2>Login</h2>
                             <div className="inputbox">
-                                <input type="email" required />
+                                <input type="email" required/>
                                 <label >Email</label>
                             </div>
                             <div className="inputbox">
-                                <input type="password" required />
+                                <input type="password" required/>
                                 <label>Password</label>
                             </div>
                             <div className="forget" >
@@ -33,5 +32,4 @@ function Login() {
         </>
     )
 }
-
 export default Login

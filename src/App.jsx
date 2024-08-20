@@ -6,8 +6,7 @@ import SignUp from './components/signUp/SignUp'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 function App() {
- 
- const router = createBrowserRouter([
+  const router = createBrowserRouter([
   {
     path :"/",
     element: <><Login /></>
@@ -18,11 +17,8 @@ function App() {
       element: <><SignUp /> </>
   }
  ])
-
-
   return (
     <>
-   
     <RouterProvider router={router} />
     </>
   )
