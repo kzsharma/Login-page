@@ -13,18 +13,21 @@ function SignUp() {
         function isValidEmail(email){
             return /\S+@\S+\.\S+/.test(email);
         }
+        function isValidName(name){
+            return /^[a-zA-Z]+$/.test(name);
+        }
         const handleSubmit=(e)=>{
             e.preventDefault();
-            if(!name || name.length<4){
-                alert("name ivalid")
+            if(!name || name.length<4 ||! isValidName(name)){
+                alert("Invalid Name")
                 return
             }
-            if(!user || user.length<4){
-                alert("user invalid")
+            if(!user || user.length<4 ){
+                alert("Invalid User name")
                 return
             }
             if(! isValidEmail(email)){
-                alert("wrong mail")
+                alert("Invalid Email")
                 return
             }
             if(password.length<8){
@@ -36,7 +39,7 @@ function SignUp() {
                 return
             } 
             if(number.length!==10){
-                alert("invalid no.")
+                alert("Invalid Phone-Number")
                 return
             }   
             if(user===password){
