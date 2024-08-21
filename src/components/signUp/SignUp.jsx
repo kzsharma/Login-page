@@ -3,51 +3,51 @@ import "./signUp.css"
 import {Link, useNavigate} from 'react-router-dom'
 
 function SignUp() {
-        const [name , setName] = useState("")
-        const [user, setUser] = useState("")
-        const [email, setEmail] = useState("")
-        const [number, setNumber] = useState("")
-        const [password, setPassword] = useState("")
-        const [confirmPassword, setConfirmPassword] = useState("")
-        const navigate = useNavigate();
-        function isValidEmail(email){
-            return /\S+@\S+\.\S+/.test(email);
+    const [name , setName] = useState("")
+    const [user, setUser] = useState("")
+    const [email, setEmail] = useState("")
+    const [number, setNumber] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const navigate = useNavigate();
+    function isValidEmail(email){
+        return /\S+@\S+\.\S+/.test(email);
+    }
+    function isValidName(name){
+         return /^[a-zA-Z]+$/.test(name);
+    }
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        if(!name || name.length<4 ||! isValidName(name)){
+            alert("Invalid Name")
+            return
         }
-        function isValidName(name){
-            return /^[a-zA-Z]+$/.test(name);
+        if(!user || user.length<4 ){
+            alert("Invalid User name")
+            return
         }
-        const handleSubmit=(e)=>{
-            e.preventDefault();
-            if(!name || name.length<4 ||! isValidName(name)){
-                alert("Invalid Name")
-                return
-            }
-            if(!user || user.length<4 ){
-                alert("Invalid User name")
-                return
-            }
-            if(! isValidEmail(email)){
-                alert("Invalid Email")
-                return
-            }
-            if(password.length<8){
-                alert("password is less than 8 characters")
-                return
-            }
-            if(password!==confirmPassword){
-                alert("password mismatch")
-                return
-            } 
-            if(number.length!==10){
-                alert("Invalid Phone-Number")
-                return
-            }   
-            if(user===password){
-                alert("password cannot be same as username")
-                return
-            } 
-            navigate("/login")               
+        if(! isValidEmail(email)){
+            alert("Invalid Email")
+            return
+        }
+        if(password.length<8){
+            alert("password is less than 8 characters")
+            return
+        }
+        if(password!==confirmPassword){
+            alert("password mismatch")
+            return
+        } 
+        if(number.length!==10){
+            alert("Invalid Phone-Number")
+            return
         }   
+        if(user===password){
+            alert("password cannot be same as username")
+            return
+        } 
+            navigate("/login")               
+    }   
     return(
         <>
             <div className='signup-1'>
@@ -88,6 +88,5 @@ function SignUp() {
         </>
     )
 }
-
 export default SignUp
 
