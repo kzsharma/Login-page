@@ -10,7 +10,6 @@ function SignUp() {
         const [password, setPassword] = useState("")
         const [confirmPassword, setConfirmPassword] = useState("")
         
-
         function isValidEmail(email){
             return /\S+@\S+\.\S+/.test(email);
         }
@@ -41,8 +40,7 @@ function SignUp() {
                     alert("wrong pass")
                     return
                 }                      
-        }
-        
+        }   
     return(
         <>
             <div className='signup-1'>
