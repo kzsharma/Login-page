@@ -9,14 +9,13 @@ function SignUp() {
         const [number, setNumber] = useState("")
         const [password, setPassword] = useState("")
         const [confirmPassword, setConfirmPassword] = useState("")
-        
+
         function isValidEmail(email){
             return /\S+@\S+\.\S+/.test(email);
         }
         const handleSubmit=e=>{
                 console.log("hi")  
-                if(!name)
-                {
+                if(!name){
                     alert("name ivalid")
                     return
                 }
