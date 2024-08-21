@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./signUp.css"
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 function SignUp() {
         const [name , setName] = useState("")
@@ -9,36 +9,41 @@ function SignUp() {
         const [number, setNumber] = useState("")
         const [password, setPassword] = useState("")
         const [confirmPassword, setConfirmPassword] = useState("")
-
+        const navigate = useNavigate();
         function isValidEmail(email){
             return /\S+@\S+\.\S+/.test(email);
         }
-        const handleSubmit=e=>{
-                console.log("hi")  
-                if(!name){
-                    alert("name ivalid")
-                    return
-                }
-                if(!user){
-                    alert("user invalid")
-                    return
-                }
-                if(! isValidEmail(email)){
-                   alert("wrong mail")
-                   return
-                }
-                if(password!=confirmPassword){
-                    alert("password mismatch")
-                    return
-                } 
-                if(number.length!=10){
-                    alert("invalid no.")
-                    return
-                }   
-                if(confirmPassword!=password){
-                    alert("wrong pass")
-                    return
-                }                      
+        const handleSubmit=(e)=>{
+            e.preventDefault();
+            if(!name || name.length<4){
+                alert("name ivalid")
+                return
+            }
+            if(!user || user.length<4){
+                alert("user invalid")
+                return
+            }
+            if(! isValidEmail(email)){
+                alert("wrong mail")
+                return
+            }
+            if(password.length<8){
+                alert("password is less than 8 characters")
+                return
+            }
+            if(password!==confirmPassword){
+                alert("password mismatch")
+                return
+            } 
+            if(number.length!==10){
+                alert("invalid no.")
+                return
+            }   
+            if(user===password){
+                alert("password cannot be same as username")
+                return
+            } 
+            navigate("/login")               
         }   
     return(
         <>
@@ -53,7 +58,7 @@ function SignUp() {
                             </div>
                             <div className="inputbox">
                                 <input type='text' value={user} onChange={(e)=>setUser(e.target.value)} required />
-                                <label>Username</label>
+                                <label>Username</label>   
                             </div>
                             <div className="inputbox">
                                 <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} required />
@@ -69,9 +74,10 @@ function SignUp() {
                             </div>
                             <div className="inputbox">
                                 <input type='password' onChange={(e)=>setConfirmPassword(e.target.value)} required />
+                                
                                 <label>Confirm Password</label>
                             </div>
-                            <Link to="#" className='signup-button'><button onClick={handleSubmit} className='signup-button'>Sign Up</button></Link>
+                           <button onClick={handleSubmit} className='signup-button'>Sign Up</button>
                         </div>
                     </form>
                 </div>

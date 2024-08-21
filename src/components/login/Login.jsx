@@ -22,7 +22,7 @@ function Login() {
                             </div>
                             <button className='login-button'>Log in</button>
                             <div className="register">
-                                <p>Don't have a account <Link to="signup">Register</Link></p>
+                                <p>Don't have a account <Link to="/signup">Register</Link></p>
                             </div>
                         </div>
                     </form>
