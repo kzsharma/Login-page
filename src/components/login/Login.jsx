@@ -1,6 +1,6 @@
 import React from 'react'
 import "./login.css"
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 function Login() {
     return(
         <>
@@ -10,11 +10,11 @@ function Login() {
                         <div>
                             <h2>Login</h2>
                             <div className="inputbox">
-                                <input type="email" required/>
-                                <label >Email</label>
+                                <input type="email" required />
+                                <label>Email</label>
                             </div>
                             <div className="inputbox">
-                                <input type="password" required/>
+                                <input type="password" required />
                                 <label>Password</label>
                             </div>
                             <div className="forget" >
