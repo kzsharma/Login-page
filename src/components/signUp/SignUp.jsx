@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { React,  useState } from 'react'
 import "./signUp.css"
 import {useNavigate} from 'react-router-dom'
 import Hide from "../signUp/hide.png"
@@ -17,6 +17,10 @@ function SignUp() {
     function isValidName(name){
          return /^[a-zA-Z ]*$/.test(name);
     }
+    function isValidUser(user)
+    {
+        return /^[a-zA-Z0-9_]*$/.test(user)
+    }
     const handleSubmit=(e)=>{
         e.preventDefault();
         if(!name || name.length<4 ||! isValidName(name)){
@@ -27,12 +31,16 @@ function SignUp() {
             alert("Invalid User name")
             return
         }
+        if(! isValidUser(user)){
+            alert("Invalid User-Name")
+            return
+        }
         if(! isValidEmail(email)){
             alert("Invalid Email")
             return
         }
-        if(password.length<8){
-            alert("password is less than 8 characters")
+        if(password.length<8 ||! isValidUser(password) ){
+            alert("password is less than 8 characters or Invalid")
             return
         }
         if(password!==confirmPassword){
@@ -47,7 +55,7 @@ function SignUp() {
             alert("password cannot be same as username")
             return
         } 
-        console.log("hi")
+       
         navigate("/")               
     }   
     return(

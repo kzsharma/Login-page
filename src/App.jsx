@@ -1,4 +1,5 @@
 import './App.css'
+import Hero from './components/hero/Hero'
 import Login from './components/login/Login'
 import SignUp from './components/signUp/SignUp'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -12,6 +13,10 @@ function App() {
   {
       path: "/signup",
       element: <> <SignUp /> </>
+  },
+  {
+    path: "/hero",
+    element: <> <Hero /> </>
   }
  ])
   return (
