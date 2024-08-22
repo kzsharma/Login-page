@@ -125,3 +125,13 @@
   .register p a:hover {
     text-decoration: underline;
   }
+
+  input.checkbox{
+    height: 2px;
+    width: 2px;
+  }
+  .pp{
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }

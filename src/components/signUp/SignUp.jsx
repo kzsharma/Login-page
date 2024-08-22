@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./signUp.css"
-import {Link, useNavigate} from 'react-router-dom'
-
+import {useNavigate} from 'react-router-dom'
+import Hide from "../signUp/hide.png"
 function SignUp() {
     const [name , setName] = useState("")
     const [user, setUser] = useState("")
@@ -9,12 +9,13 @@ function SignUp() {
     const [number, setNumber] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [show, setShow] = useState(false)
     const navigate = useNavigate();
     function isValidEmail(email){
         return /\S+@\S+\.\S+/.test(email);
     }
     function isValidName(name){
-         return /^[a-zA-Z]+$/.test(name);
+         return /^[a-zA-Z ]*$/.test(name);
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -38,7 +39,7 @@ function SignUp() {
             alert("password mismatch")
             return
         } 
-        if(number.length!==10){
+        if(number.length<10 || nymber.length>11){
             alert("Invalid Phone-Number")
             return
         }   
@@ -46,7 +47,7 @@ function SignUp() {
             alert("password cannot be same as username")
             return
         } 
-            navigate("/login")               
+        navigate("/login")               
     }   
     return(
         <>
@@ -71,14 +72,15 @@ function SignUp() {
                                 <input type='tel' value={number} onChange={(e)=>setNumber(e.target.value)} required />
                                 <label>Mobile No.</label>
                             </div>
-                            <div className="inputbox">
-                                <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} required />
+                            <div className="inputbox pp">
+                                <input type={show? "text":"password"} value={password} onChange={(e)=>setPassword(e.target.value)} required />
                                 <label> New Password</label>
+                                <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
                             </div>
-                            <div className="inputbox">
-                                <input type='password' onChange={(e)=>setConfirmPassword(e.target.value)} required />
-                                
+                            <div className="inputbox pp">
+                                <input type={show? "text":"password"} onChange={(e)=>setConfirmPassword(e.target.value)} required />
                                 <label>Confirm Password</label>
+                                <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
                             </div>
                            <button onClick={handleSubmit} className='signup-button'>Sign Up</button>
                         </div>

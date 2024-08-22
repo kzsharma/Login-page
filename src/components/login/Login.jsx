@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./login.css"
 import {Link} from 'react-router-dom'
+import Hide from "../signUp/hide.png"
 function Login() {
+    const [show, setShow] = useState(false)
     return(
         <>
              <div className="form-box">
@@ -13,9 +15,10 @@ function Login() {
                                 <input type="email" required />
                                 <label>Email</label>
                             </div>
-                            <div className="inputbox">
-                                <input type="password" required />
+                            <div className="inputbox pp">
+                                <input type={show? "text":"password"} required />
                                 <label>Password</label>
+                                <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
                             </div>
                             <div className="forget" >
                                 <label><input type="checkbox" />Remember Me <Link to="#">Forget Password</Link></label>
