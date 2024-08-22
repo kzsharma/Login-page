@@ -8,7 +8,7 @@ function Login() {
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
     function isValidEmail(email){
-        return /\S+@\S+\.\S+/.test(email);
+    return /\S+@\S+\.\S+/.test(email);
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -20,7 +20,7 @@ function Login() {
             alert("password is less than 8 characters")
             return
         }
-         navigate("/hero")               
+        navigate("/hero")               
     }
     return(
         <>
