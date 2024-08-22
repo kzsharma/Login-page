@@ -55,7 +55,6 @@ function SignUp() {
             alert("password cannot be same as username")
             return
         } 
-       
         navigate("/")               
     }   
     return(

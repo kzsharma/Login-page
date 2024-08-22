@@ -20,9 +20,7 @@ function Login() {
             alert("password is less than 8 characters")
             return
         }
-        
         navigate("/hero")               
-
     }
     return(
         <>
