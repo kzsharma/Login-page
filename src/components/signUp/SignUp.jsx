@@ -39,7 +39,7 @@ function SignUp() {
             alert("password mismatch")
             return
         } 
-        if(number.length<10 || nymber.length>11){
+        if(number.length<10 || number.length>12){
             alert("Invalid Phone-Number")
             return
         }   
@@ -47,6 +47,7 @@ function SignUp() {
             alert("password cannot be same as username")
             return
         } 
+        console.log("hi")
         navigate("/login")               
     }   
     return(
@@ -69,15 +70,15 @@ function SignUp() {
                                 <label>Email</label>
                             </div>
                             <div className="inputbox">
-                                <input type='tel' value={number} onChange={(e)=>setNumber(e.target.value)} required />
+                                <input type='text' value={number} onChange={(e)=>setNumber(e.target.value)} required />
                                 <label>Mobile No.</label>
                             </div>
-                            <div className="inputbox pp">
+                            <div className="inputbox pass-eye">
                                 <input type={show? "text":"password"} value={password} onChange={(e)=>setPassword(e.target.value)} required />
                                 <label> New Password</label>
                                 <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
                             </div>
-                            <div className="inputbox pp">
+                            <div className="inputbox pass-eye">
                                 <input type={show? "text":"password"} onChange={(e)=>setConfirmPassword(e.target.value)} required />
                                 <label>Confirm Password</label>
                                 <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>

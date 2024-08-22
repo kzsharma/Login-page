@@ -6,16 +6,16 @@ function Login() {
     const [show, setShow] = useState(false)
     return(
         <>
-             <div className="form-box">
+            <div className="form-box">
                 <div className="form-value">
                     <form>
                         <div>
                             <h2>Login</h2>
                             <div className="inputbox">
-                                <input type="email" required />
+                                <input type="text" required />
                                 <label>Email</label>
                             </div>
-                            <div className="inputbox pp">
+                            <div className="inputbox pass-eye">
                                 <input type={show? "text":"password"} required />
                                 <label>Password</label>
                                 <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
