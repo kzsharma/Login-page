@@ -10,6 +10,7 @@ function SignUp() {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [show, setShow] = useState(false)
+    const [show2, setShow2] = useState(false)
     const navigate = useNavigate();
     function isValidEmail(email){
         return /\S+@\S+\.\S+/.test(email);
@@ -19,7 +20,7 @@ function SignUp() {
     }
     function isValidUser(user)
     {
-        return /^[a-zA-Z0-9_]*$/.test(user)
+        return /^[A-Za-z0-9_@./!$^*)(#&+-]*$/.test(user)
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -83,12 +84,12 @@ function SignUp() {
                             <div className="inputbox pass-eye">
                                 <input type={show? "text":"password"} value={password} onChange={(e)=>setPassword(e.target.value)} required />
                                 <label> New Password</label>
-                                <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
+                                <img onMouseDown={(e)=>setShow(!show)} onMouseUp={(e)=>setShow(!show)} className="hide"src={Hide}></img>
                             </div>
                             <div className="inputbox pass-eye">
-                                <input type={show? "text":"password"} onChange={(e)=>setConfirmPassword(e.target.value)} required />
+                                <input type={show2? "text":"password"} onChange={(e)=>setConfirmPassword(e.target.value)} required />
                                 <label>Confirm Password</label>
-                                <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
+                                <img onMouseDown={(e)=>setShow2(!show2)} onMouseUp={(e)=>setShow2(!show2)} className="hide"src={Hide}></img>
                             </div>
                            <button onClick={handleSubmit} className='signup-button'>Sign Up</button>
                         </div>

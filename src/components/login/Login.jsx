@@ -11,7 +11,7 @@ function Login() {
         return /\S+@\S+\.\S+/.test(email);
     }
     const handleSubmit=(e)=>{
-            e.preventDefault();
+        e.preventDefault();
         if(! isValidEmail(email)){
             alert("Invalid Email")
             return
@@ -20,7 +20,7 @@ function Login() {
             alert("password is less than 8 characters")
             return
         }
-        navigate("/hero")               
+         navigate("/hero")               
     }
     return(
         <>
@@ -36,7 +36,7 @@ function Login() {
                             <div className="inputbox pass-eye">
                             <input type={show? "text":"password"} value={password} onChange={(e)=>setPassword(e.target.value)} required />
                                 <label>Password</label>
-                                <img onClick={(e)=>setShow(!show)} className="hide"src={Hide}></img>
+                                <img onMouseDown={(e)=>setShow(!show)} onMouseUp={(e)=>setShow(!show)} className="hide"src={Hide}></img>
                             </div>
                             <div className="forget" >
                                 <label><input type="checkbox" />Remember Me <Link to="#">Forget Password</Link></label>
