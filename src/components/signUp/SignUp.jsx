@@ -48,7 +48,7 @@ function SignUp() {
             return
         } 
         console.log("hi")
-        navigate("/login")               
+        navigate("/")               
     }   
     return(
         <>
