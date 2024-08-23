@@ -1,64 +1,112 @@
-import { React,  useState } from 'react'
+import { React, useState } from 'react'
 import "./signUp.css"
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Hide from "../signUp/hide.png"
+import View from "../signup/view.png"
 function SignUp() {
-    const [name , setName] = useState("")
-    const [user, setUser] = useState("")
-    const [email, setEmail] = useState("")
-    const [number, setNumber] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
     const [show, setShow] = useState(false)
     const [show2, setShow2] = useState(false)
     const navigate = useNavigate();
-    function isValidEmail(email){
+    const [data, setData] = useState({
+        name: '',
+        user: '',
+        email: '',
+        number: '',
+        password: '',
+        confirmPassword: ''
+    });
+    const [errors, setErrors] = useState({
+        name: '',
+        user: '',
+        email: '',
+        number: '',
+        password: '',
+        confirmPassword: ''
+    })
+
+    function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
     }
-    function isValidName(name){
-         return /^[a-zA-Z ]*$/.test(name);
+    function isValidName(name) {
+        return /^[a-zA-Z ]*$/.test(name);
     }
-    function isValidUser(user)
-    {
+    function isValidUser(user) {
         return /^[A-Za-z0-9_@./!$^*)(#&+-]*$/.test(user)
     }
-    const handleSubmit=(e)=>{
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if(!name || name.length<4 ||! isValidName(name)){
-            alert("Invalid Name")
+        if (!data.name || data.name.length < 4 || !isValidName(data.name)) {
+
+            setErrors(prevState => ({
+                ...prevState,
+                name: 'invalid name'
+            }))
             return
         }
-        if(!user || user.length<4 ){
-            alert("Invalid User name")
+        if (!data.user || data.user.length < 4) {
+            setErrors(prevState => ({
+                ...prevState,
+                user: 'invalid user'
+            }))
             return
         }
-        if(! isValidUser(user)){
-            alert("Invalid User-Name")
+        if (!isValidUser(data.user)) {
+            setErrors(prevState => ({
+                ...prevState,
+                user: 'Invalid User-Name'
+            }))
             return
         }
-        if(! isValidEmail(email)){
-            alert("Invalid Email")
+        if (!isValidEmail(data.email)) {
+
+            setErrors(prevState => ({
+                ...prevState,
+                email: 'Invalid User-Name'
+            }))
             return
         }
-        if(password.length<8 ||! isValidUser(password) ){
-            alert("password is less than 8 characters or Invalid")
+        if (data.password.length < 8 || !isValidUser(data.password)) {
+
+            setErrors(prevState => ({
+                ...prevState,
+                password: 'Invalid Password'
+            }))
             return
         }
-        if(password!==confirmPassword){
-            alert("password mismatch")
+        if (data.password !== data.confirmPassword) {
+            setErrors(prevState => ({
+                ...prevState,
+                confirmPassword: 'Password Mismatch'
+            }))
             return
-        } 
-        if(number.length<10 || number.length>12){
-            alert("Invalid Phone-Number")
+        }
+        if (data.number.length < 10 || data.number.length > 12) {
+
+            setErrors(prevState => ({
+                ...prevState,
+                number: 'Invalid Number'
+            }))
             return
-        }   
-        if(user===password){
-            alert("password cannot be same as username")
+        }
+        if (data.user === data.password) {
+
+            setErrors(prevState => ({
+                ...prevState,
+                password: 'Password Cannot be same as username'
+            }))
             return
-        } 
-        navigate("/")               
-    }   
-    return(
+        }
+        navigate("/")
+        console.log(data.name)
+    }
+    return (
         <>
             <div className='signup-1'>
                 <div className='box'>
@@ -66,32 +114,95 @@ function SignUp() {
                     <form >
                         <div className='input-form'>
                             <div className="inputbox">
-                                <input type='text' value={name} onChange={(e)=>setName(e.target.value)} required />
+                                <input
+                                    type='text'
+                                    name='name'
+                                    value={data.name}
+                                    onChange={handleChange}
+                                    required
+                                />
                                 <label>Name</label>
+                                {errors.name && <p>{errors.name}</p>}
                             </div>
-                            <div className="inputbox">
-                                <input type='text' value={user} onChange={(e)=>setUser(e.target.value)} required />
-                                <label>Username</label>   
+                            <div className='invalid'>
+                                <div className="inputbox">
+                                    <input
+                                        type='text'
+                                        name='user'
+                                        value={data.user}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <label>Username</label>
+                                </div>
+                                {errors.user && <p>{errors.user}</p>}
                             </div>
-                            <div className="inputbox">
-                                <input type='text' value={email} onChange={(e)=>setEmail(e.target.value)} required />
-                                <label>Email</label>
+                            <div className='invalid'>
+                                <div className="inputbox">
+                                    <input
+                                        type='text'
+                                        name='email'
+                                        value={data.email}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <label>Email</label>
+                                </div>
+                                {errors.email && <p>{errors.email}</p>}
                             </div>
-                            <div className="inputbox">
-                                <input type='text' value={number} onChange={(e)=>setNumber(e.target.value)} required />
-                                <label>Mobile No.</label>
+                            <div className='invalid'>
+                                <div className="inputbox">
+                                    <input
+                                        type='text'
+                                        name='number'
+                                        value={data.number}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <label>Mobile No.</label>
+                                </div>
+                                {errors.number && <p>{errors.number}</p>}
                             </div>
-                            <div className="inputbox pass-eye">
-                                <input type={show? "text":"password"} value={password} onChange={(e)=>setPassword(e.target.value)} required />
-                                <label> New Password</label>
-                                <img onMouseDown={(e)=>setShow(!show)} onMouseUp={(e)=>setShow(!show)} className="hide"src={Hide}></img>
+                            <div className='invalid'>
+                                <div className="inputbox pass-eye">
+                                    <input
+                                        type={show ? "text" : "password"}
+                                        name='password'
+                                        value={data.password}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <label> New Password</label>
+                                    <img
+                                        onClick={() => setShow(!show)}
+                                        className="hide"
+                                        src={show ? Hide : View}>
+                                    </img>
+                                </div>
+                                {errors.password && <p>{errors.password}</p>}
                             </div>
-                            <div className="inputbox pass-eye">
-                                <input type={show2? "text":"password"} onChange={(e)=>setConfirmPassword(e.target.value)} required />
-                                <label>Confirm Password</label>
-                                <img onMouseDown={(e)=>setShow2(!show2)} onMouseUp={(e)=>setShow2(!show2)} className="hide"src={Hide}></img>
+                            <div className='invalid'>
+                                <div className="inputbox pass-eye">
+                                    <input
+                                        type={show2 ? "text" : "password"}
+                                        name='confirmPassword'
+                                        value={data.confirmPassword}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <label>Confirm Password</label>
+                                    <img
+                                        onClick={() => setShow2(!show2)}
+                                        className="hide"
+                                        src={show2 ? Hide : View}>
+                                    </img>
+                                </div>
+                                {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
                             </div>
-                           <button onClick={handleSubmit} className='signup-button'>Sign Up</button>
+                            <button
+                                onClick={handleSubmit}
+                                className='signup-button'>Sign Up
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -1,11 +1,12 @@
 .signup-1{
     margin-top: 2%;
-    margin-bottom: 2%;  
+    margin-bottom: 2%;
+  
 }
 .heading{
-    background-color: rgb(222, 239, 255);;
+    background-color: rgb(255, 255, 255);;
   
-    color: rgb(12, 19, 26);
+    color: rgb(0, 0, 0);
     display: grid;
     grid-template-columns: auto auto ;
     gap: 10px;
@@ -17,7 +18,7 @@
     gap: 10px;
     padding:20px;
     border: solid gray;
-    background-color: rgb(225, 244, 255);
+    background-color: rgb(255, 255, 255);
 }
 .box{
     display: flex;
@@ -42,4 +43,7 @@
     height: 20px;
     width: 20px;
     padding-right: 15px;
+}
+.invalid{
+    margin:  0px
 }
