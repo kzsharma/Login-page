@@ -122,7 +122,7 @@ function SignUp() {
                                 />
                                 <label>Name</label>
                                 </div>
-                                {errors.name && <p>{errors.name}</p>}
+                                {errors.name && <p className='invalid-text'>{errors.name}</p>}
                             </div>
                             <div className='invalid'>
                                 <div className="inputbox">
@@ -135,7 +135,7 @@ function SignUp() {
                                     />
                                     <label>Username</label>
                                 </div>
-                                {errors.user && <p>{errors.user}</p>}
+                                {errors.user && <p className='invalid-text'>{errors.user}</p>}
                             </div>
                             <div className='invalid'>
                                 <div className="inputbox">
@@ -148,7 +148,7 @@ function SignUp() {
                                     />
                                     <label>Email</label>
                                 </div>
-                                {errors.email && <p>{errors.email}</p>}
+                                {errors.email && <p className='invalid-text'>{errors.email}</p>}
                             </div>
                             <div className='invalid'>
                                 <div className="inputbox">
@@ -161,7 +161,7 @@ function SignUp() {
                                     />
                                     <label>Mobile No.</label>
                                 </div>
-                                {errors.number && <p>{errors.number}</p>}
+                                {errors.number && <p className='invalid-text'>{errors.number}</p>}
                             </div>
                             <div className='invalid'>
                                 <div className="inputbox pass-eye">
@@ -180,7 +180,7 @@ function SignUp() {
                                             src={show ? Hide : View}>
                                         </img>}
                                 </div>
-                                {errors.password && <p>{errors.password}</p>}
+                                {errors.password && <p className='invalid-text'>{errors.password}</p>}
                             </div>
                             <div className='invalid'>
                                 <div className="inputbox pass-eye">
@@ -199,7 +199,7 @@ function SignUp() {
                                             src={show2 ? Hide : View}>
                                         </img>}
                                 </div>
-                                {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+                                {errors.confirmPassword && <p className='invalid-text'>{errors.confirmPassword}</p>}
                             </div>
                             <button
                                 onClick={handleSubmit}

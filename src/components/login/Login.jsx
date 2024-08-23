@@ -40,6 +40,7 @@ function Login() {
             }))
             return
         }
+       
         navigate("/hero")
     }
     return (
@@ -59,7 +60,7 @@ function Login() {
                                         required />
                                     <label>Email</label>
                                 </div>
-                                {error.email && <p>{error.email}</p>}
+                                {error.email && <p className='invalid-text'>{error.email}</p>}
                             </div>
                             <div className='invalid'>
                                 <div className="inputbox pass-eye">
@@ -78,7 +79,7 @@ function Login() {
                                             src={show ? Hide : View}>
                                         </img>}
                                 </div>
-                                {error.password && <p>{error.password}</p>}
+                                {error.password && <p  >{error.password}</p>}
                             </div>
                             <div className="forget" >
                                 <label>
