@@ -79,7 +79,7 @@ function Login() {
                                             src={show ? Hide : View}>
                                         </img>}
                                 </div>
-                                {error.password && <p  >{error.password}</p>}
+                                {error.password && <p className='invalid-text' >{error.password}</p>}
                             </div>
                             <div className="forget" >
                                 <label>

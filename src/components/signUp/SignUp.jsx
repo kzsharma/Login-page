@@ -52,20 +52,14 @@ function SignUp() {
             }))
             return
         }
-        if (!data.user || data.user.length < 4) {
+        if (!data.user || data.user.length < 4 || !isValidUser(data.user)) {
             setErrors(prevState => ({
                 ...prevState,
-                user: 'invalid user'
+                user: 'invalid user-Name'
             }))
             return
         }
-        if (!isValidUser(data.user)) {
-            setErrors(prevState => ({
-                ...prevState,
-                user: 'Invalid User-Name'
-            }))
-            return
-        }
+        
         if (!isValidEmail(data.email)) {
             setErrors(prevState => ({
                 ...prevState,
