@@ -43,7 +43,6 @@ function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!data.name || data.name.length < 4 || !isValidName(data.name)) {
-
             setErrors(prevState => ({
                 ...prevState,
                 name: 'invalid name'
@@ -65,7 +64,6 @@ function SignUp() {
             return
         }
         if (!isValidEmail(data.email)) {
-
             setErrors(prevState => ({
                 ...prevState,
                 email: 'Invalid User-Name'
@@ -73,7 +71,6 @@ function SignUp() {
             return
         }
         if (data.password.length < 8 || !isValidUser(data.password)) {
-
             setErrors(prevState => ({
                 ...prevState,
                 password: 'Invalid Password'
@@ -88,7 +85,6 @@ function SignUp() {
             return
         }
         if (data.number.length < 10 || data.number.length > 12) {
-
             setErrors(prevState => ({
                 ...prevState,
                 number: 'Invalid Number'
@@ -96,7 +92,6 @@ function SignUp() {
             return
         }
         if (data.user === data.password) {
-
             setErrors(prevState => ({
                 ...prevState,
                 password: 'Password Cannot be same as username'
@@ -113,6 +108,7 @@ function SignUp() {
                     <h2 className='heading'>Sign Up</h2>
                     <form >
                         <div className='input-form'>
+                        <div className='invalid'>
                             <div className="inputbox">
                                 <input
                                     type='text'
@@ -122,6 +118,7 @@ function SignUp() {
                                     required
                                 />
                                 <label>Name</label>
+                                </div>
                                 {errors.name && <p>{errors.name}</p>}
                             </div>
                             <div className='invalid'>
@@ -173,11 +170,12 @@ function SignUp() {
                                         required
                                     />
                                     <label> New Password</label>
-                                    <img
-                                        onClick={() => setShow(!show)}
-                                        className="hide"
-                                        src={show ? Hide : View}>
-                                    </img>
+                                    {data.password &&
+                                        <img
+                                            onClick={() => setShow(!show)}
+                                            className="hide"
+                                            src={show ? Hide : View}>
+                                        </img>}
                                 </div>
                                 {errors.password && <p>{errors.password}</p>}
                             </div>
@@ -191,11 +189,12 @@ function SignUp() {
                                         required
                                     />
                                     <label>Confirm Password</label>
-                                    <img
-                                        onClick={() => setShow2(!show2)}
-                                        className="hide"
-                                        src={show2 ? Hide : View}>
-                                    </img>
+                                    {data.confirmPassword &&
+                                        <img
+                                            onClick={() => setShow2(!show2)}
+                                            className="hide"
+                                            src={show2 ? Hide : View}>
+                                        </img>}
                                 </div>
                                 {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
                             </div>

@@ -1,11 +1,9 @@
 .signup-1{
     margin-top: 2%;
     margin-bottom: 2%;
-  
 }
 .heading{
     background-color: rgb(255, 255, 255);;
-  
     color: rgb(0, 0, 0);
     display: grid;
     grid-template-columns: auto auto ;
@@ -31,7 +29,7 @@
     width: 80%;
     height: 40px;
     border-radius: 40px;
-    background: #67c1eb;
+    background: #75dbf2;
     border: none;
     outline: none;
     cursor: pointer;
@@ -45,5 +43,5 @@
     padding-right: 15px;
 }
 .invalid{
-    margin:  0px
+    margin: 0px
 }
