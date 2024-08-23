@@ -33,6 +33,9 @@ function SignUp() {
     function isValidUser(user) {
         return /^[A-Za-z0-9_@./!$^*)(#&+-]*$/.test(user)
     }
+    function isValidNumber(number) {
+        return /^\d+$/.test(number)
+    }
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData(prevState => ({
@@ -84,7 +87,7 @@ function SignUp() {
             }))
             return
         }
-        if (data.number.length < 10 || data.number.length > 12) {
+        if (data.number.length < 10 || data.number.length > 12 || !isValidNumber(data.number)) {
             setErrors(prevState => ({
                 ...prevState,
                 number: 'Invalid Number'
