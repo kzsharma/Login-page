@@ -203,7 +203,7 @@ function SignUp() {
                             </div>
                             <button
                                 onClick={handleSubmit}
-                                className='signup-button'>Sign Up
+                                className='signup-button'>Sign Ups
                             </button>
                         </div>
                     </form>
