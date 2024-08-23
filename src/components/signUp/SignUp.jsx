@@ -69,7 +69,7 @@ function SignUp() {
         if (!isValidEmail(data.email)) {
             setErrors(prevState => ({
                 ...prevState,
-                email: 'Invalid User-Name'
+                email: 'Invalid Email'
             }))
             return
         }
