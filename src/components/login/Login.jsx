@@ -21,27 +21,35 @@ function Login() {
         }));
     }
     const navigate = useNavigate();
+
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        let isdataValid = true
+        setError(prevState => ({
+            ...prevState,
+            email: "",
+            password: ""
+        }))
         if (!isValidEmail(user.email)) {
             setError(prevState => ({
                 ...prevState,
                 email: "invalid Email"
             }))
-            return
+            isdataValid = false
         }
         if (user.password.length < 8) {
             setError(prevState => ({
                 ...prevState,
                 password: "invalid password"
             }))
-            return
+            isdataValid = false
         }
-       
-        navigate("/hero")
+        if (isdataValid) {
+            navigate("/hero")
+        }
     }
     return (
         <>

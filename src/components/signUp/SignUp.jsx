@@ -23,7 +23,6 @@ function SignUp() {
         password: '',
         confirmPassword: ''
     })
-
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
     }
@@ -45,58 +44,75 @@ function SignUp() {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        let isdataValid = true
+        setErrors(prevState => ({
+            ...prevState,
+            name: '',
+            user: '',
+            email: '',
+            number: '',
+            password: '',
+            confirmPassword: ''
+        }))
         if (!data.name || data.name.length < 4 || !isValidName(data.name)) {
             setErrors(prevState => ({
                 ...prevState,
                 name: 'invalid name'
             }))
-            return
+            isdataValid = false
         }
         if (!data.user || data.user.length < 4 || !isValidUser(data.user)) {
             setErrors(prevState => ({
                 ...prevState,
                 user: 'invalid user-Name'
             }))
-            return
+            isdataValid = false
         }
-        
         if (!isValidEmail(data.email)) {
             setErrors(prevState => ({
                 ...prevState,
                 email: 'Invalid Email'
             }))
-            return
+            isdataValid = false
         }
         if (data.password.length < 8 || !isValidUser(data.password)) {
             setErrors(prevState => ({
                 ...prevState,
                 password: 'Invalid Password'
             }))
-            return
+            isdataValid = false
         }
         if (data.password !== data.confirmPassword) {
             setErrors(prevState => ({
                 ...prevState,
                 confirmPassword: 'Password Mismatch'
             }))
-            return
+            isdataValid = false
         }
         if (data.number.length < 10 || data.number.length > 12 || !isValidNumber(data.number)) {
             setErrors(prevState => ({
                 ...prevState,
                 number: 'Invalid Number'
             }))
-            return
+            isdataValid = false
         }
         if (data.user === data.password) {
             setErrors(prevState => ({
                 ...prevState,
                 password: 'Password Cannot be same as username'
             }))
-            return
+            isdataValid = false
         }
-        navigate("/")
-        console.log(data.name)
+        // Object.keys(errors).forEach((key)=>{
+        //     if(errors[key]){
+        //             console.log(errors)
+        //             console.log("sdsds")
+        //         return
+        //     }
+        // })
+        if (isdataValid) {
+            navigate("/")
+        }
     }
     return (
         <>
@@ -105,16 +121,16 @@ function SignUp() {
                     <h2 className='heading'>Sign Up</h2>
                     <form >
                         <div className='input-form'>
-                        <div className='invalid'>
-                            <div className="inputbox">
-                                <input
-                                    type='text'
-                                    name='name'
-                                    value={data.name}
-                                    onChange={handleChange}
-                                    required
-                                />
-                                <label>Name</label>
+                            <div className='invalid'>
+                                <div className="inputbox">
+                                    <input
+                                        type='text'
+                                        name='name'
+                                        value={data.name}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                    <label>Name</label>
                                 </div>
                                 {errors.name && <p className='invalid-text'>{errors.name}</p>}
                             </div>
@@ -207,4 +223,3 @@ function SignUp() {
     )
 }
 export default SignUp
-
