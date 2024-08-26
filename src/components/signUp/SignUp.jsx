@@ -34,6 +34,7 @@ function SignUp() {
     }
     function isValidNumber(number) {
         return /^\d+$/.test(number)
+        //return /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/.test(number)     // alternate regex
     }
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -57,14 +58,14 @@ function SignUp() {
         if (!data.name || data.name.length < 4 || !isValidName(data.name)) {
             setErrors(prevState => ({
                 ...prevState,
-                name: 'invalid name'
+                name: 'Invalid name'
             }))
             isdataValid = false
         }
         if (!data.user || data.user.length < 4 || !isValidUser(data.user)) {
             setErrors(prevState => ({
                 ...prevState,
-                user: 'invalid user-Name'
+                user: 'Invalid user-Name'
             }))
             isdataValid = false
         }
@@ -72,6 +73,13 @@ function SignUp() {
             setErrors(prevState => ({
                 ...prevState,
                 email: 'Invalid Email'
+            }))
+            isdataValid = false
+        }
+        if (data.user === data.password) {
+            setErrors(prevState => ({
+                ...prevState,
+                password: 'Password Cannot be same as username'
             }))
             isdataValid = false
         }
@@ -96,14 +104,7 @@ function SignUp() {
             }))
             isdataValid = false
         }
-        if (data.user === data.password) {
-            setErrors(prevState => ({
-                ...prevState,
-                password: 'Password Cannot be same as username'
-            }))
-            isdataValid = false
-        }
-        // Object.keys(errors).forEach((key)=>{
+        // Object.keys(errors).forEach((key)=>{        //alternate way (iterating object value to (to use this we need to remove isValid ))
         //     if(errors[key]){
         //             console.log(errors)
         //             console.log("sdsds")

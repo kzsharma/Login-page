@@ -36,14 +36,14 @@ function Login() {
         if (!isValidEmail(user.email)) {
             setError(prevState => ({
                 ...prevState,
-                email: "invalid Email"
+                email: "Invalid Email"
             }))
             isdataValid = false
         }
         if (user.password.length < 8) {
             setError(prevState => ({
                 ...prevState,
-                password: "invalid password"
+                password: "Invalid password"
             }))
             isdataValid = false
         }
