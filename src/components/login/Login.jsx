@@ -43,7 +43,7 @@ function Login() {
         if (user.password.length < 8) {
             setError(prevState => ({
                 ...prevState,
-                password: "Invalid password"
+                password: "Invalid Password"
             }))
             isdataValid = false
         }
