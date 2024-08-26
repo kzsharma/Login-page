@@ -58,14 +58,14 @@ function SignUp() {
         if (!data.name || data.name.length < 4 || !isValidName(data.name)) {
             setErrors(prevState => ({
                 ...prevState,
-                name: 'Invalid name'
+                name: 'Invalid Name'
             }))
             isdataValid = false
         }
         if (!data.user || data.user.length < 4 || !isValidUser(data.user)) {
             setErrors(prevState => ({
                 ...prevState,
-                user: 'Invalid user-Name'
+                user: 'Invalid User-Name'
             }))
             isdataValid = false
         }
