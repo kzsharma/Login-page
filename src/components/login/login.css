@@ -103,8 +103,8 @@
   .register p a {
     
     color: #00c2bf;
-    font-weight: 600;
-    text-decoration: underline;
+    font-weight: 800;
+    text-decoration: none;
   }
   .register p a:hover {
     text-decoration: underline;

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import "./login.css"
 import { Link, useNavigate } from 'react-router-dom'
-import Hide from "../signUp/hide.png"
-import View from "../SignUp/View.png"
+
+import Input from '../input/Input'
 function Login() {
-    const [show, setShow] = useState(false)
     const [error, setError] = useState({
         email: '',
         password: '',
@@ -14,6 +13,7 @@ function Login() {
         password: '',
     })
     const handleChange = (e) => {
+        console.log(e.target.name)
         const { name, value } = e.target;
         setUser(prevState => ({
             ...prevState,
@@ -21,7 +21,6 @@ function Login() {
         }));
     }
     const navigate = useNavigate();
-
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
     }
@@ -58,37 +57,22 @@ function Login() {
                     <form>
                         <div>
                             <h2>Login</h2>
-                            <div className='invalid'>
-                                <div className="inputbox">
-                                    <input
-                                        type='text'
-                                        name='email'
-                                        value={user.email}
-                                        onChange={handleChange}
-                                        required />
-                                    <label>Email</label>
-                                </div>
-                                {error.email && <p className='invalid-text'>{error.email}</p>}
-                            </div>
-                            <div className='invalid'>
-                                <div className="inputbox pass-eye">
-                                    <input
-                                        type={show ? "text" : "password"}
-                                        name='password'
-                                        value={user.password}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <label>Password</label>
-                                    {user.password &&
-                                        <img
-                                            onClick={() => setShow(!show)}
-                                            className="hide"
-                                            src={show ? Hide : View}>
-                                        </img>}
-                                </div>
-                                {error.password && <p className='invalid-text' >{error.password}</p>}
-                            </div>
+                            <Input
+                                type='text'
+                                name='email'
+                                value={user.email}
+                                onChange={handleChange}
+                                label="Email"
+                                error={error.email}
+                            />
+                            <Input
+                                type ='password'
+                                name='password'
+                                value={user.password}
+                                onChange={handleChange}
+                                label="Password"
+                                error={error.password}
+                            />
                             <div className="forget" >
                                 <label>
                                     <input
@@ -100,8 +84,8 @@ function Login() {
                                 onClick={handleSubmit}>Log in
                             </button>
                             <div className="register">
-                                <p>Don't have a account
-                                    <Link to="/signup"> Register</Link>
+                                <p>Don't have a account &nbsp; 
+                                    <Link to="/signup">Register</Link>
                                 </p>
                             </div>
                         </div>

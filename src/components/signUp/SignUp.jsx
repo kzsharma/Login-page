@@ -1,11 +1,9 @@
 import { React, useState } from 'react'
 import "./signUp.css"
 import { useNavigate } from 'react-router-dom'
-import Hide from "../signUp/hide.png"
-import View from "../signup/view.png"
+import Input from '../input/Input'
+
 function SignUp() {
-    const [show, setShow] = useState(false)
-    const [show2, setShow2] = useState(false)
     const navigate = useNavigate();
     const [data, setData] = useState({
         name: '',
@@ -104,13 +102,6 @@ function SignUp() {
             }))
             isdataValid = false
         }
-        // Object.keys(errors).forEach((key)=>{        //alternate way (iterating object value to (to use this we need to remove isValid ))
-        //     if(errors[key]){
-        //             console.log(errors)
-        //             console.log("sdsds")
-        //         return
-        //     }
-        // })
         if (isdataValid) {
             navigate("/")
         }
@@ -122,78 +113,47 @@ function SignUp() {
                     <h2 className='heading'>Sign Up</h2>
                     <form >
                         <div className='input-form'>
-                            <div className='invalid'>
-                                <div className="inputbox">
-                                    <input
-                                        type='text'
-                                        name='name'
-                                        value={data.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <label>Name</label>
-                                </div>
-                                {errors.name && <p className='invalid-text'>{errors.name}</p>}
-                            </div>
-                            <div className='invalid'>
-                                <div className="inputbox">
-                                    <input
-                                        type='text'
-                                        name='user'
-                                        value={data.user}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <label>Username</label>
-                                </div>
-                                {errors.user && <p className='invalid-text'>{errors.user}</p>}
-                            </div>
-                            <div className='invalid'>
-                                <div className="inputbox">
-                                    <input
-                                        type='text'
-                                        name='email'
-                                        value={data.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <label>Email</label>
-                                </div>
-                                {errors.email && <p className='invalid-text'>{errors.email}</p>}
-                            </div>
-                            <div className='invalid'>
-                                <div className="inputbox">
-                                    <input
-                                        type='text'
-                                        name='number'
-                                        value={data.number}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <label>Mobile No.</label>
-                                </div>
-                                {errors.number && <p className='invalid-text'>{errors.number}</p>}
-                            </div>
-                            <div className='invalid'>
-                                <div className="inputbox pass-eye">
-                                    <input
-                                        type={show ? "text" : "password"}
-                                        name='password'
-                                        value={data.password}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <label> New Password</label>
-                                    {data.password &&
-                                        <img
-                                            onClick={() => setShow(!show)}
-                                            className="hide"
-                                            src={show ? Hide : View}>
-                                        </img>}
-                                </div>
-                                {errors.password && <p className='invalid-text'>{errors.password}</p>}
-                            </div>
-                            <div className='invalid'>
+                            <Input
+                                type='text'
+                                name='name'
+                                value={data.name}
+                                onChange={handleChange}
+                                label="Name"
+                                error={errors.name}
+                            />
+                            <Input
+                                type='text'
+                                name='user'
+                                value={data.user}
+                                onChange={handleChange}
+                                label="User"
+                                error={errors.user}
+                            />
+                            <Input
+                                type='text'
+                                name='email'
+                                value={data.email}
+                                onChange={handleChange}
+                                label="Email"
+                                error={errors.email}
+                            />
+                            <Input
+                                type="text"
+                                name='number'
+                                value={data.number}
+                                onChange={handleChange}
+                                label="Number"
+                                error={errors.number }
+                            />
+                             <Input
+                                 
+                                 name='password'
+                                 value={data.password}
+                                 onChange={handleChange}
+                                 label="Password"
+                                 error={errors.password}
+                             />
+                            {/* <div className='invalid'>
                                 <div className="inputbox pass-eye">
                                     <input
                                         type={show2 ? "text" : "password"}
@@ -211,7 +171,14 @@ function SignUp() {
                                         </img>}
                                 </div>
                                 {errors.confirmPassword && <p className='invalid-text'>{errors.confirmPassword}</p>}
-                            </div>
+                            </div> */}
+                            <Input
+                                name='confirmPassword'
+                                value={data.confirmPassword}
+                                onChange={handleChange}
+                                label="Confirm Password"
+                                error={errors.confirmPassword}
+                            />
                             <button
                                 onClick={handleSubmit}
                                 className='signup-button'>Sign Up
