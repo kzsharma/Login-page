@@ -2,15 +2,13 @@ import { React, useState } from 'react'
 import Hide from "../signUp/hide.png"
 import View from "../SignUp/View.png"
 
-function Input({ type, name, value, label, onChange, error }) {
- 
+function Input({ type,name, value, label, onChange, error}) {
     const [show, setShow] = useState(true)
-    console.log(type)
     return (
         <div className='invalid'>
             <div className="inputbox pass-eye">
                 <input
-                    type={type}
+                    type={type==='text'?  'text' :show?'password': 'text'}
                     name={name}
                     value={value}
                     onChange={onChange}
@@ -18,14 +16,13 @@ function Input({ type, name, value, label, onChange, error }) {
                 <label>{label}</label>
                 {(type === 'password' && value) &&
                     <img
-                        onClick={() => setShow(!show)}
+                        onClick={() =>setShow(!show)}
                         className="hide"
                         src={show ? Hide : View}>
                     </img>}
             </div>
-            {error && <p className='invalid-text'>{error}</p>}
+            {error &&<p className='invalid-text'>{error}</p>}
         </div>
     );
 }
-
 export default Input

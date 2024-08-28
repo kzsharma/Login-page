@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import "./login.css"
 import { Link, useNavigate } from 'react-router-dom'
-
 import Input from '../input/Input'
+
 function Login() {
     const [error, setError] = useState({
         email: '',
@@ -66,7 +66,7 @@ function Login() {
                                 error={error.email}
                             />
                             <Input
-                                type ='password'
+                                type='password'
                                 name='password'
                                 value={user.password}
                                 onChange={handleChange}
@@ -84,7 +84,7 @@ function Login() {
                                 onClick={handleSubmit}>Log in
                             </button>
                             <div className="register">
-                                <p>Don't have a account &nbsp; 
+                                <p>Don't have a account &nbsp;
                                     <Link to="/signup">Register</Link>
                                 </p>
                             </div>
