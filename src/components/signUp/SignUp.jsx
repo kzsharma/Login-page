@@ -153,25 +153,6 @@ function SignUp() {
                                  label="Password"
                                  error={errors.password}
                              />
-                            {/* <div className='invalid'>
-                                <div className="inputbox pass-eye">
-                                    <input
-                                        type={show2 ? "text" : "password"}
-                                        name='confirmPassword'
-                                        value={data.confirmPassword}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <label>Confirm Password</label>
-                                    {data.confirmPassword &&
-                                        <img
-                                            onClick={() => setShow2(!show2)}
-                                            className="hide"
-                                            src={show2 ? Hide : View}>
-                                        </img>}
-                                </div>
-                                {errors.confirmPassword && <p className='invalid-text'>{errors.confirmPassword}</p>}
-                            </div> */}
                             <Input
                                 name='confirmPassword'
                                 value={data.confirmPassword}
