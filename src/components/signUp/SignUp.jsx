@@ -102,6 +102,7 @@ function SignUp() {
             }))
             isdataValid = false
         }
+        console.log(data)
         if (isdataValid) {
             navigate("/")
         }
@@ -145,8 +146,8 @@ function SignUp() {
                                 label="Number"
                                 error={errors.number }
                             />
-                             <Input
-                                 
+                             <Input   
+                                type='password'
                                  name='password'
                                  value={data.password}
                                  onChange={handleChange}
@@ -154,6 +155,7 @@ function SignUp() {
                                  error={errors.password}
                              />
                             <Input
+                                type='password'
                                 name='confirmPassword'
                                 value={data.confirmPassword}
                                 onChange={handleChange}
