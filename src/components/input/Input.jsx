@@ -1,7 +1,6 @@
 import { React, useState } from 'react'
-import Hide from "../signUp/hide.png"
-import View from "../SignUp/View.png"
-
+import Hide from "../../assets/hide.png"
+import View from "../../assets/View.png"
 function Input({ type,name, value, label, onChange, error}) {
     const [showEyeIcon, setShowEyeIcon] = useState(true)
     return (
