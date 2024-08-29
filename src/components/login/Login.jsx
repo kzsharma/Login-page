@@ -2,54 +2,33 @@ import React, { useState } from 'react'
 import "./login.css"
 import { Link, useNavigate } from 'react-router-dom'
 import Input from '../input/Input'
+import usevalidate from '../../hooks/usevalidate'
 
 function Login() {
-    const [error, setError] = useState({
-        email: '',
-        password: '',
-    })
+    const navigate = useNavigate()
+    const [error, setError] = useState({})
     const [user, setUser] = useState({
         email: '',
         password: '',
     })
     const handleChange = (e) => {
-        console.log(e.target.name)
+        // console.log(e.target.name)
         const { name, value } = e.target;
         setUser(prevState => ({
             ...prevState,
             [name]: value
         }));
     }
-    const navigate = useNavigate();
-    function isValidEmail(email) {
-        return /\S+@\S+\.\S+/.test(email);
-    }
     const handleSubmit = (e) => {
         e.preventDefault();
-        let isdataValid = true
-        setError(prevState => ({
-            ...prevState,
-            email: "",
-            password: ""
-        }))
-        if (!isValidEmail(user.email)) {
-            setError(prevState => ({
-                ...prevState,
-                email: "Invalid Email"
-            }))
-            isdataValid = false
-        }
-        if (user.password.length < 8) {
-            setError(prevState => ({
-                ...prevState,
-                password: "Invalid Password"
-            }))
-            isdataValid = false
-        }
-        if (isdataValid) {
-            navigate("/hero")
+        setError({})
+        setError(usevalidate(user));
+        if (Object.keys(error).length === 0) {
+            console.log("ABC")
+            // navigate("/hero")
         }
     }
+    console.log(Object.keys(error).length)
     return (
         <>
             <div className="form-box">
