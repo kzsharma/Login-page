@@ -16,7 +16,7 @@ function App() {
   },
   {
     path: "/hero",
-    element: <> <Hero /> </>
+    element: <Hero />
   }
  ])
   return (

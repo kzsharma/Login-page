@@ -7,11 +7,12 @@ function usevalidate(user) {
 
     if(!emailPattern.test(user.email)){
       error.email ="invalid Email"
+     
     }
     if (user.password.length < 8){
       error.password ="Invalid password"
-    }
 
+    }
     // console.log(error)
     return error
 }

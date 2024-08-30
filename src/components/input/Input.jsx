@@ -1,13 +1,13 @@
 import { React, useState } from 'react'
 import Hide from "../../assets/hide.png"
 import View from "../../assets/View.png"
-function Input({ type,name, value, label, onChange, error}) {
+function Input({ type, name, value, label, onChange, error }) {
     const [showEyeIcon, setShowEyeIcon] = useState(true)
     return (
         <div className='invalid'>
             <div className="inputbox pass-eye">
                 <input
-                    type={type==='text'?  'text' :showEyeIcon ?'password': 'text'}
+                    type={type === 'text' ? 'text' : showEyeIcon ? 'password' : 'text'}
                     name={name}
                     value={value}
                     onChange={onChange}
@@ -15,12 +15,12 @@ function Input({ type,name, value, label, onChange, error}) {
                 <label>{label}</label>
                 {(type === 'password' && value) &&
                     <img
-                        onClick={() =>setShowEyeIcon(!showEyeIcon)}
+                        onClick={() => setShowEyeIcon(!showEyeIcon)}
                         className="hide"
-                        src={showEyeIcon ? View: Hide}>
+                        src={showEyeIcon ? View : Hide}>
                     </img>}
             </div>
-            {error &&<p className='invalid-text'>{error}</p>}
+            {error && <p className='invalid-text'>{error}</p>}
         </div>
     );
 }
