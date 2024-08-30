@@ -2,10 +2,10 @@ import { React, useState } from 'react'
 import "./signUp.css"
 import { useNavigate } from 'react-router-dom'
 import Input from '../input/Input'
-
+import usevalidate from '../../hooks/usevalidate'
 function SignUp() {
     const navigate = useNavigate();
-    const [data, setData] = useState({
+    const [user, setUser] = useState({
         name: '',
         user: '',
         email: '',
@@ -14,96 +14,40 @@ function SignUp() {
         confirmPassword: ''
     });
     const [errors, setErrors] = useState({
-        name: '',
-        user: '',
-        email: '',
-        number: '',
-        password: '',
-        confirmPassword: ''
+        // name: '',
+        // user: '',
+        // email: '',
+        // number: '',
+        // password: '',
+        // confirmPassword: ''
     })
-    function isValidEmail(email) {
-        return /\S+@\S+\.\S+/.test(email);
-    }
-    function isValidName(name) {
-        return /^[a-zA-Z ]*$/.test(name);
-    }
-    function isValidUser(user) {
-        return /^[A-Za-z0-9_@./!$^*)(#&+-]*$/.test(user)
-    }
-    function isValidNumber(number) {
-        return /^\d+$/.test(number)
-        //return /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/.test(number)     // alternate regex
-    }
+    // function isValidEmail(email) {
+    //     return /\S+@\S+\.\S+/.test(email);
+    // }
+    // function isValidName(name) {
+    //     return /^[a-zA-Z ]*$/.test(name);
+    // }
+    // function isValidUser(user) {
+    //     return /^[A-Za-z0-9_@./!$^*)(#&+-]*$/.test(user)
+    // }
+    // function isValidNumber(number) {
+    //     return /^\d+$/.test(number)
+    //     //return /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/.test(number)     // alternate regex
+    // }
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setData(prevState => ({
+        setUser(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        let isdataValid = true
-        setErrors(prevState => ({
-            ...prevState,
-            name: '',
-            user: '',
-            email: '',
-            number: '',
-            password: '',
-            confirmPassword: ''
-        }))
-        if (!data.name || data.name.length < 4 || !isValidName(data.name)) {
-            setErrors(prevState => ({
-                ...prevState,
-                name: 'Invalid Name'
-            }))
-            isdataValid = false
-        }
-        if (!data.user || data.user.length < 4 || !isValidUser(data.user)) {
-            setErrors(prevState => ({
-                ...prevState,
-                user: 'Invalid User-Name'
-            }))
-            isdataValid = false
-        }
-        if (!isValidEmail(data.email)) {
-            setErrors(prevState => ({
-                ...prevState,
-                email: 'Invalid Email'
-            }))
-            isdataValid = false
-        }
-        if (data.user === data.password) {
-            setErrors(prevState => ({
-                ...prevState,
-                password: 'Password Cannot be same as username'
-            }))
-            isdataValid = false
-        }
-        if (data.password.length < 8 || !isValidUser(data.password)) {
-            setErrors(prevState => ({
-                ...prevState,
-                password: 'Invalid Password'
-            }))
-            isdataValid = false
-        }
-        if (data.password !== data.confirmPassword) {
-            setErrors(prevState => ({
-                ...prevState,
-                confirmPassword: 'Password Mismatch'
-            }))
-            isdataValid = false
-        }
-        if (data.number.length < 10 || data.number.length > 12 || !isValidNumber(data.number)) {
-            setErrors(prevState => ({
-                ...prevState,
-                number: 'Invalid Number'
-            }))
-            isdataValid = false
-        }
-        console.log(data)
-        if (isdataValid) {
+        setErrors({})
+        const validateErrors = usevalidate(user)
+        setErrors(validateErrors)
+        console.log("val-jet",Object.keys(validateErrors))
+        if (Object.keys(validateErrors).length === 0) {
             navigate("/")
         }
     }
@@ -117,7 +61,7 @@ function SignUp() {
                             <Input
                                 type='text'
                                 name='name'
-                                value={data.name}
+                                value={user.name}
                                 onChange={handleChange}
                                 label="Name"
                                 error={errors.name}
@@ -125,7 +69,7 @@ function SignUp() {
                             <Input
                                 type='text'
                                 name='user'
-                                value={data.user}
+                                value={user.user}
                                 onChange={handleChange}
                                 label="User"
                                 error={errors.user}
@@ -133,7 +77,7 @@ function SignUp() {
                             <Input
                                 type='text'
                                 name='email'
-                                value={data.email}
+                                value={user.email}
                                 onChange={handleChange}
                                 label="Email"
                                 error={errors.email}
@@ -141,7 +85,7 @@ function SignUp() {
                             <Input
                                 type="text"
                                 name='number'
-                                value={data.number}
+                                value={user.number}
                                 onChange={handleChange}
                                 label="Number"
                                 error={errors.number }
@@ -149,7 +93,7 @@ function SignUp() {
                              <Input   
                                 type='password'
                                  name='password'
-                                 value={data.password}
+                                 value={user.password}
                                  onChange={handleChange}
                                  label="Password"
                                  error={errors.password}
@@ -157,7 +101,7 @@ function SignUp() {
                             <Input
                                 type='password'
                                 name='confirmPassword'
-                                value={data.confirmPassword}
+                                value={user.confirmPassword}
                                 onChange={handleChange}
                                 label="Confirm Password"
                                 error={errors.confirmPassword}

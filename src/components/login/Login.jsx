@@ -22,24 +22,17 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setError({})
-        console.log(user)
         const validateErrors = usevalidate(user)
         setError(validateErrors)
-        console.log("abc",error)
-        if(Object.keys(validateErrors).length === 0)
-        {
+        console.log("error-key",Object.keys(error))
+        console.log("error",Object.keys(error).length)
+        console.log("val-jet",Object.keys(validateErrors))
+        console.log("validate",Object.keys(validateErrors).length)
+        if (Object.keys(validateErrors).length===0) {
             navigate("/hero")
         }
-                // setError(usevalidate(user));
-        //     console.log(error);
-        //     if (Object.keys(error).length === 0) {
-        //         console.log("ABC")
-        //         navigate("/hero")
-        //     }
-        // console.log(Object.keys(error))
-        
     }
-
+    // console.log("error-key-after",Object.keys(error))
     return (
         <>
             <div className='positioning'>
