@@ -12,7 +12,6 @@ function Login() {
         password: '',
     })
     const handleChange = (e) => {
-        // console.log(e.target.name)
         const { name, value } = e.target;
         setUser(prevState => ({
             ...prevState,
@@ -24,15 +23,10 @@ function Login() {
         setError({})
         const validateErrors = usevalidate(user)
         setError(validateErrors)
-        console.log("error-key",Object.keys(error))
-        console.log("error",Object.keys(error).length)
-        console.log("val-jet",Object.keys(validateErrors))
-        console.log("validate",Object.keys(validateErrors).length)
         if (Object.keys(validateErrors).length===0) {
             navigate("/hero")
         }
     }
-    // console.log("error-key-after",Object.keys(error))
     return (
         <>
             <div className='positioning'>

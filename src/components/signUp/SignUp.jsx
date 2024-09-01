@@ -7,33 +7,14 @@ function SignUp() {
     const navigate = useNavigate();
     const [user, setUser] = useState({
         name: '',
-        user: '',
+        userName: '',
         email: '',
         number: '',
         password: '',
         confirmPassword: ''
     });
-    const [errors, setErrors] = useState({
-        // name: '',
-        // user: '',
-        // email: '',
-        // number: '',
-        // password: '',
-        // confirmPassword: ''
+    const [errors, setErrors] = useState({  
     })
-    // function isValidEmail(email) {
-    //     return /\S+@\S+\.\S+/.test(email);
-    // }
-    // function isValidName(name) {
-    //     return /^[a-zA-Z ]*$/.test(name);
-    // }
-    // function isValidUser(user) {
-    //     return /^[A-Za-z0-9_@./!$^*)(#&+-]*$/.test(user)
-    // }
-    // function isValidNumber(number) {
-    //     return /^\d+$/.test(number)
-    //     //return /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/.test(number)     // alternate regex
-    // }
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUser(prevState => ({
@@ -46,7 +27,6 @@ function SignUp() {
         setErrors({})
         const validateErrors = usevalidate(user)
         setErrors(validateErrors)
-        console.log("val-jet",Object.keys(validateErrors))
         if (Object.keys(validateErrors).length === 0) {
             navigate("/")
         }
@@ -68,11 +48,11 @@ function SignUp() {
                             />
                             <Input
                                 type='text'
-                                name='user'
-                                value={user.user}
+                                name='userName'
+                                value={user.userName}
                                 onChange={handleChange}
-                                label="User"
-                                error={errors.user}
+                                label="User-Name"
+                                error={errors.userName}
                             />
                             <Input
                                 type='text'
