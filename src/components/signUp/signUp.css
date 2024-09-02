@@ -50,3 +50,13 @@
     color: red;
     margin: -20px 0 2px;
 }
+
+@media (width <= 756px) {
+    .input-form{
+        display: flex;
+        flex-direction: column;
+    }
+    .signup-button{
+        margin-left: 32px;
+    }
+  }
