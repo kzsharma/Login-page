@@ -23,7 +23,7 @@ function Login() {
         setError({})
         const validateErrors = usevalidate(user)
         setError(validateErrors)
-        if (Object.keys(validateErrors).length===0) {
+        if (Object.keys(validateErrors).length === 0) {
             navigate("/hero")
         }
     }

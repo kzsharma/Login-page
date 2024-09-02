@@ -13,7 +13,7 @@ function SignUp() {
         password: '',
         confirmPassword: ''
     });
-    const [errors, setErrors] = useState({  
+    const [errors, setErrors] = useState({
     })
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,7 +35,7 @@ function SignUp() {
         <>
             <div className='signup-1'>
                 <div className='box'>
-                    <h2 className='heading'>Sign Up</h2>
+                    <h2 className='heading'>Sign-Up</h2>
                     <form >
                         <div className='input-form'>
                             <Input
@@ -67,17 +67,17 @@ function SignUp() {
                                 name='number'
                                 value={user.number}
                                 onChange={handleChange}
-                                label="Number"
-                                error={errors.number }
+                                label="Mobile Number"
+                                error={errors.number}
                             />
-                             <Input   
+                            <Input
                                 type='password'
-                                 name='password'
-                                 value={user.password}
-                                 onChange={handleChange}
-                                 label="Password"
-                                 error={errors.password}
-                             />
+                                name='password'
+                                value={user.password}
+                                onChange={handleChange}
+                                label="Password"
+                                error={errors.password}
+                            />
                             <Input
                                 type='password'
                                 name='confirmPassword'

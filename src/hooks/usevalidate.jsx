@@ -1,10 +1,9 @@
 
 function usevalidate(user) {
-  console.log(user)
   const error = {}
   const emailPattern = /\S+@\S+\.\S+/;
   const userNamePattern = /^[A-Za-z0-9_@./!$^*)(#&+-]*$/;
-  const namePattern = /^[a-zA-Z ]*$/;
+  const namePattern = /^[A-Za-z]+( [A-Za-z]+)?$/
   const numberPattern = /^\d+$/
   const passwrodPattern = /^[ A-Za-z0-9_@./#&+-]*$/;
 
