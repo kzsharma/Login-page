@@ -1,16 +1,15 @@
-
-function usevalidate(user) {
+function useValidate(user) {
+  console.log(user)
   const error = {}
   const emailPattern = /\S+@\S+\.\S+/;
   const userNamePattern = /^[A-Za-z0-9_@./!$^*)(#&+-]*$/;
   const namePattern = /^[A-Za-z]+( [A-Za-z]+)?$/
-  const numberPattern = /^\d+$/
+  const numberPattern = /^\d+$/;
   const passwrodPattern = /^[ A-Za-z0-9_@./#&+-]*$/;
-
   if (("email" in user) && (!emailPattern.test(user.email))) {
     error.email = "Invalid Email"
   }
-  if ((user.password) && (user.password.length < 8)) {
+  if (("password" in user) && ((!user.password) && (user.password.length < 8))) {
     error.password = "Invalid password"
   }
   if (("name" in user) && (!user.name || user.name.length < 4 || !namePattern.test(user.name))) {
@@ -34,7 +33,8 @@ function usevalidate(user) {
   if (("number" in user) && (!user.number || user.number.length < 10 || user.number.length > 12 || !numberPattern.test(user.number))) {
     error.number = "Invalid Number"
   }
+
   return error
 }
 
-export default usevalidate
+export default useValidate

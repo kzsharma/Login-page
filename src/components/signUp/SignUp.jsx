@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import "./signUp.css"
 import { useNavigate } from 'react-router-dom'
 import Input from '../input/Input'
-import usevalidate from '../../hooks/usevalidate'
+import usevalidate from '../../hooks/useValidate.jsx'
 function SignUp() {
     const navigate = useNavigate();
     const [user, setUser] = useState({
@@ -13,8 +13,15 @@ function SignUp() {
         password: '',
         confirmPassword: ''
     });
-    const [errors, setErrors] = useState({
-    })
+    const [errors, setErrors] = useState({})
+    const inputFields = [
+        { type: 'text', name: 'name', label: 'Name' },
+        { type: 'text', name: 'userName', label: 'User-Name' },
+        { type: 'text', name: 'email', label: 'Email' },
+        { type: 'text', name: 'number', label: 'Mobile Number' },
+        { type: 'password', name: 'password', label: 'Password' },
+        { type: 'password', name: 'confirmPassword', label: 'Confirm Password' }
+    ];
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUser(prevState => ({
@@ -38,54 +45,25 @@ function SignUp() {
                     <h2 className='heading'>Sign-Up</h2>
                     <form >
                         <div className='input-form'>
-                            <Input
-                                type='text'
-                                name='name'
-                                value={user.name}
-                                onChange={handleChange}
-                                label="Name"
-                                error={errors.name}
-                            />
-                            <Input
-                                type='text'
-                                name='userName'
-                                value={user.userName}
-                                onChange={handleChange}
-                                label="User-Name"
-                                error={errors.userName}
-                            />
-                            <Input
-                                type='text'
-                                name='email'
-                                value={user.email}
-                                onChange={handleChange}
-                                label="Email"
-                                error={errors.email}
-                            />
-                            <Input
-                                type="text"
-                                name='number'
-                                value={user.number}
-                                onChange={handleChange}
-                                label="Mobile Number"
-                                error={errors.number}
-                            />
-                            <Input
-                                type='password'
-                                name='password'
-                                value={user.password}
-                                onChange={handleChange}
-                                label="Password"
-                                error={errors.password}
-                            />
-                            <Input
+                            {/* <Input
                                 type='password'
                                 name='confirmPassword'
                                 value={user.confirmPassword}
                                 onChange={handleChange}
                                 label="Confirm Password"
                                 error={errors.confirmPassword}
-                            />
+                            />  */}
+                            {inputFields.map((field, index) => (
+                                <Input
+                                    key={index}
+                                    type={field.type}
+                                    name={field.name}
+                                    value={user[field.name]}
+                                    onChange={handleChange}
+                                    label={field.label}
+                                    error={errors[field.name]}
+                                />
+                            ))}
                             <button
                                 onClick={handleSubmit}
                                 className='signup-button'>Sign Up

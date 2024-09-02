@@ -2,8 +2,7 @@ import React, { useRef, useState } from 'react'
 import "./login.css"
 import { Link, useNavigate } from 'react-router-dom'
 import Input from '../input/Input'
-import usevalidate from '../../hooks/usevalidate'
-
+import usevalidate from '../../hooks/useValidate.jsx'
 function Login() {
     const navigate = useNavigate()
     const [error, setError] = useState({})
