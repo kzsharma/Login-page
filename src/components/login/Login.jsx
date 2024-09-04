@@ -10,6 +10,10 @@ function Login() {
         email: '',
         password: '',
     })
+    const inputFields = [
+        { type: 'text', name: 'email', label: 'Email' },
+        { type: 'password', name: 'password', label: 'Password' }
+    ]
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUser(prevState => ({
@@ -34,22 +38,17 @@ function Login() {
                         <form>
                             <div>
                                 <h2>Login</h2>
-                                <Input
-                                    type='text'
-                                    name='email'
-                                    value={user.email}
-                                    onChange={handleChange}
-                                    label="Email"
-                                    error={error.email}
-                                />
-                                <Input
-                                    type='password'
-                                    name='password'
-                                    value={user.password}
-                                    onChange={handleChange}
-                                    label="Password"
-                                    error={error.password}
-                                />
+                                {inputFields.map((field, index) => (
+                                    <Input
+                                        key={index}
+                                        type={field.type}
+                                        name={field.name}
+                                        value={user[field.name]}
+                                        onChange={handleChange}
+                                        label={field.label}
+                                        error={error[field.name]}
+                                    />
+                                ))}
                                 <div className="forget" >
                                     <label>
                                         <input
