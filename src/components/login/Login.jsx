@@ -5,30 +5,32 @@ import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
 function Login() {
     const navigate = useNavigate()
-    const [error, setError] = useState({})
-    const [user, setUser] = useState({
-        email: '',
-        password: '',
-    })
+   
+    const {user,error,handleChange,validateEmail,validatePassword}= usevalidate()
     const inputFields = [
         { type: 'text', name: 'email', label: 'Email' },
         { type: 'password', name: 'password', label: 'Password' }
     ]
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUser(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    }
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setUser(prevState => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }));
+    // }
     const handleSubmit = (e) => {
+        
         e.preventDefault();
-        setError({})
-        const validateErrors = usevalidate(user)
-        setError(validateErrors)
-        if (Object.keys(validateErrors).length === 0) {
-            navigate("/hero")
+        let flag =true
+        if(!validateEmail(user.email))
+        {
+          flag=false
         }
+        if(!validatePassword(user.password)){
+            flag= false
+        }
+        if(flag)
+        navigate("/hero") 
     }
     return (
         <>
