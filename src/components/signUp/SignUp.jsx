@@ -4,8 +4,7 @@ import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
 import utilites from '../../assets/utilities/utilites.jsx'
 function SignUp() {
-
-    const { user, error, name, password, confirmPassword, number,
+    const { user, error,
         validateConfirmPassword,
         handleChange, validateEmail,
         validatePassword,
