@@ -34,13 +34,13 @@ function SignUp() {
         validateUsername(user.userName)
         validatePassAndCPass(user.password, user.confirmPassword)
         validatePassAndUSer(user.password, user.userName)
-        if (validatePassword(user.password) && 
-            validateName(user.name) && 
-            validateEmail(user.email) && 
-            validateConfirmPassword(user.confirmPassword) && 
-            validateNumber(user.number) && 
+        if (validatePassword(user.password) &&
+            validateName(user.name) &&
+            validateEmail(user.email) &&
+            validateConfirmPassword(user.confirmPassword) &&
+            validateNumber(user.number) &&
             validateUsername(user.userName) &&
-            validatePassAndUSer(user.password, user.userName)&&
+            validatePassAndUSer(user.password, user.userName) &&
             validatePassAndCPass(user.password, user.confirmPassword)) {
             navigate("/")
         }
@@ -52,14 +52,6 @@ function SignUp() {
                     <h2 className='heading'>Sign-Up</h2>
                     <form >
                         <div className='input-form'>
-                            {/* <Input
-                                type='password'
-                                name='confirmPassword'
-                                value={user.confirmPassword}
-                                onChange={handleChange}
-                                label="Confirm Password"
-                                error={errors.confirmPassword}
-                            />  */}
                             {inputFields.map((field, index) => (
                                 <Input
                                     key={index}

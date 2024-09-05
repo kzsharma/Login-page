@@ -5,9 +5,8 @@ import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
 import utilites from '../../assets/utilities/utilites.jsx'
 function Login() {
-   
-    const {user,error,handleChange,validateEmail,validatePassword}= usevalidate()
-    const {navigate}=utilites()
+    const { user, error, handleChange, validateEmail, validatePassword } = usevalidate()
+    const { navigate } = utilites()
     const inputFields = [
         { type: 'text', name: 'email', label: 'Email' },
         { type: 'password', name: 'password', label: 'Password' }
@@ -16,8 +15,7 @@ function Login() {
         e.preventDefault();
         validateEmail(user.email)
         validatePassword(user.password)
-        if(validateEmail(user.email) && validatePassword(user.password))
-        {
+        if (validateEmail(user.email) && validatePassword(user.password)) {
             navigate("/hero")
         }
     }

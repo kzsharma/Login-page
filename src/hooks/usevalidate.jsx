@@ -32,7 +32,6 @@ function useValidate() {
 
   };
   const validateEmail = (email) => {
-    console.log("validate-email", email)
     if ((!emailPattern.test(email))) {
       setError(prevState => ({
         ...prevState,
@@ -50,7 +49,7 @@ function useValidate() {
     }
   };
   const validatePassword = (password) => {
-    if (!password || password.length < 8|| !passwrodPattern.test(password)) {
+    if (!password || password.length < 8 || !passwrodPattern.test(password)) {
       setError(prevState => ({
         ...prevState,
         password: "Invalid Password"
@@ -58,22 +57,22 @@ function useValidate() {
       return false
     }
     else {
-    setError(prevState => ({
-      ...prevState,
-      password: ""
-    }))
-    return true
-  }
+      setError(prevState => ({
+        ...prevState,
+        password: ""
+      }))
+      return true
+    }
   }
   const validateUsername = (userName) => {
-    if (!userName || userName.length < 4|| !userNamePattern.test(userName)) {
+    if (!userName || userName.length < 4 || !userNamePattern.test(userName)) {
       setError(prevState => ({
         ...prevState,
         userName: "Invalid Username"
       }))
       return false
     }
-    else{
+    else {
       setError(prevState => ({
         ...prevState,
         userName: ""
@@ -82,7 +81,6 @@ function useValidate() {
     }
   }
   const validateNumber = (number) => {
-    console.log(number)
     if (!number || number.length < 10 || number.length > 12 || !numberPattern.test(number)) {
       setError(prevState => ({
         ...prevState,
@@ -90,7 +88,7 @@ function useValidate() {
       }))
       return false
     }
-    else{
+    else {
       setError(prevState => ({
         ...prevState,
         number: ""
@@ -115,15 +113,14 @@ function useValidate() {
     }
   }
   const validateConfirmPassword = (confirmPassword) => {
-    if (!confirmPassword || confirmPassword.length<8) {
+    if (!confirmPassword || confirmPassword.length < 8) {
       setError(prevState => ({
         ...prevState,
         confirmPassword: "Invalid Password"
       }))
       return false
     }
-    else 
-    {
+    else {
       setError(prevState => ({
         ...prevState,
         confirmPassword: ""
@@ -131,16 +128,15 @@ function useValidate() {
       return true
     }
   }
-  const validatePassAndCPass = (confirmPassword,password) => {
-    if (!confirmPassword|| confirmPassword!=password) {
+  const validatePassAndCPass = (confirmPassword, password) => {
+    if (!confirmPassword || confirmPassword != password) {
       setError(prevState => ({
         ...prevState,
         confirmPassword: "Invalid Password"
       }))
       return false
     }
-    else 
-    {
+    else {
       setError(prevState => ({
         ...prevState,
         confirmPassword: ""
@@ -148,8 +144,8 @@ function useValidate() {
       return true
     }
   }
-  const validatePassAndUSer= (password,userName) => {
-    if (!password || password===userName) {
+  const validatePassAndUSer = (password, userName) => {
+    if (!password || password === userName) {
       setError(prevState => ({
         ...prevState,
         password: "Cannot be same as Username"
@@ -157,16 +153,13 @@ function useValidate() {
       return false
     }
     else {
-    setError(prevState => ({
-      ...prevState,
-      password: ""
-    }))
-    return true
+      setError(prevState => ({
+        ...prevState,
+        password: ""
+      }))
+      return true
+    }
   }
-  }
-  
-
-
   return {
     user,
     error,
