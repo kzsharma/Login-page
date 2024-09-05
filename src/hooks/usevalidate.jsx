@@ -38,51 +38,133 @@ function useValidate() {
         ...prevState,
         email: "Invalid Error"
       }));
+
       return false
     }
-    else
+    else {
+      setError(prevState => ({
+        ...prevState,
+        email: ""
+      }))
       return true
+    }
   };
   const validatePassword = (password) => {
-    if (!password || password < 8) {
+    if (!password || password.length < 8|| !passwrodPattern.test(password)) {
       setError(prevState => ({
         ...prevState,
         password: "Invalid Password"
       }))
+      return false
     }
+    else {
+    setError(prevState => ({
+      ...prevState,
+      password: ""
+    }))
+    return true
+  }
   }
   const validateUsername = (userName) => {
-    if (!userName || userName.length < 4 || !userNamePattern.test(userName)) {
+    if (!userName || userName.length < 4|| !userNamePattern.test(userName)) {
       setError(prevState => ({
         ...prevState,
         userName: "Invalid Username"
       }))
+      return false
+    }
+    else{
+      setError(prevState => ({
+        ...prevState,
+        userName: ""
+      }))
+      return true
     }
   }
-  const validateNumber = (Number) => {
-    if (!user.number || user.number.length < 10 || user.number.length > 12 || !numberPattern.test(user.number)) {
+  const validateNumber = (number) => {
+    console.log(number)
+    if (!number || number.length < 10 || number.length > 12 || !numberPattern.test(number)) {
       setError(prevState => ({
         ...prevState,
         number: "Invalid Number"
       }))
+      return false
+    }
+    else{
+      setError(prevState => ({
+        ...prevState,
+        number: ""
+      }))
+      return true
     }
   }
-  const validateName = (name)=>{
-    if(!name || name.length < 4 || !namePattern.test(name)){
+  const validateName = (name) => {
+    if (!name || name.length < 4 || !namePattern.test(name)) {
       setError(prevState => ({
         ...prevState,
         name: "Invalid name"
       }))
+      return false
+    }
+    else {
+      setError(prevState => ({
+        ...prevState,
+        name: ""
+      }))
+      return true
     }
   }
-  const validateConfirmPassword = (ConfirmPassword) => {
-    if (!user.confirmPassword && !user.password) {
+  const validateConfirmPassword = (confirmPassword) => {
+    if (!confirmPassword || confirmPassword.length<8) {
       setError(prevState => ({
         ...prevState,
         confirmPassword: "Invalid Password"
       }))
+      return false
+    }
+    else 
+    {
+      setError(prevState => ({
+        ...prevState,
+        confirmPassword: ""
+      }))
+      return true
     }
   }
+  const validatePassAndCPass = (confirmPassword,password) => {
+    if (!confirmPassword|| confirmPassword!=password) {
+      setError(prevState => ({
+        ...prevState,
+        confirmPassword: "Invalid Password"
+      }))
+      return false
+    }
+    else 
+    {
+      setError(prevState => ({
+        ...prevState,
+        confirmPassword: ""
+      }))
+      return true
+    }
+  }
+  const validatePassAndUSer= (password,userName) => {
+    if (!password || password===userName) {
+      setError(prevState => ({
+        ...prevState,
+        password: "Cannot be same as Username"
+      }))
+      return false
+    }
+    else {
+    setError(prevState => ({
+      ...prevState,
+      password: ""
+    }))
+    return true
+  }
+  }
+  
 
 
   return {
@@ -94,35 +176,10 @@ function useValidate() {
     validateName,
     validateNumber,
     validateUsername,
-    validateConfirmPassword
+    validateConfirmPassword,
+    validatePassAndCPass,
+    validatePassAndUSer
   }
 
 }
 export default useValidate
-
-// if (("password" in user) && ((!user.password) && (user.password.length < 8))) {
-//   error.password = "Invalid password"
-// }
-// if (("name" in user) && (!user.name || user.name.length < 4 || !namePattern.test(user.name))) {
-//   error.name = "Invalid Name"
-// }
-// if (("userName" in user) && (!user.userName || user.userName.length < 4 || !userNamePattern.test(user.userName))) {
-//   error.userName = "Invalid Username"
-// }
-// if (("password" in user) && (user.userName === user.password)) {
-//   error.password = "Password Cannot be same as Username"
-// }
-// if (("password" in user) && (user.password.length < 8 || !passwrodPattern.test(user.password))) {
-//   error.password = "Invalid Password"
-// }
-// if (("confirmPassword" in user) && (user.password !== user.confirmPassword)) {
-//   error.confirmPassword = "Password Mismatch"
-// }
-// if (("confirmPassword" in user && "password" in user) && (!user.confirmPassword && !user.password)) {
-//   error.confirmPassword = "Invalid Password"
-// }
-// if (("number" in user) && (!user.number || user.number.length < 10 || user.number.length > 12 || !numberPattern.test(user.number))) {
-//   error.number = "Invalid Number"
-// }
-
-// return error

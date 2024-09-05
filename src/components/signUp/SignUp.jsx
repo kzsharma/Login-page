@@ -1,20 +1,21 @@
 import { React, useState } from 'react'
 import "./signUp.css"
-import { useNavigate } from 'react-router-dom'
 import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
+import utilites from '../../assets/utilities/utilites.jsx'
 function SignUp() {
-    const navigate = useNavigate();
-    // const [user, setUser] = useState({
-    //     name: '',
-    //     userName: '',
-    //     email: '',
-    //     number: '',
-    //     password: '',
-    //     confirmPassword: ''
-    // });
-    // const [errors, setErrors] = useState({})
-    const {user,error,name,password,confirmPassword,number,validateConfirmPassword,handleChange,validateEmail,validatePassword,validateNumber,validateName,validateUsername}= usevalidate()
+
+    const { user, error, name, password, confirmPassword, number,
+        validateConfirmPassword,
+        handleChange, validateEmail,
+        validatePassword,
+        validateNumber,
+        validateName,
+        validatePassAndCPass,
+        validateUsername,
+        validatePassAndUSer
+    } = usevalidate()
+    const { navigate } = utilites()
     const inputFields = [
         { type: 'text', name: 'name', label: 'Name' },
         { type: 'text', name: 'userName', label: 'User-Name' },
@@ -23,13 +24,6 @@ function SignUp() {
         { type: 'password', name: 'password', label: 'Password' },
         { type: 'password', name: 'confirmPassword', label: 'Confirm Password' }
     ];
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setUser(prevState => ({
-    //         ...prevState,
-    //         [name]: value
-    //     }));
-    // };
     const handleSubmit = (e) => {
         e.preventDefault();
         validatePassword(user.password)
@@ -38,11 +32,18 @@ function SignUp() {
         validateConfirmPassword(user.confirmPassword)
         validateNumber(user.number)
         validateUsername(user.userName)
-        // const validateErrors = usevalidate(user)
-        // setErrors(validateErrors)
-        // if (Object.keys(validateErrors).length === 0) {
-        //     navigate("/")
-        // }
+        validatePassAndCPass(user.password, user.confirmPassword)
+        validatePassAndUSer(user.password, user.userName)
+        if (validatePassword(user.password) && 
+            validateName(user.name) && 
+            validateEmail(user.email) && 
+            validateConfirmPassword(user.confirmPassword) && 
+            validateNumber(user.number) && 
+            validateUsername(user.userName) &&
+            validatePassAndUSer(user.password, user.userName)&&
+            validatePassAndCPass(user.password, user.confirmPassword)) {
+            navigate("/")
+        }
     }
     return (
         <>

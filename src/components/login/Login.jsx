@@ -1,35 +1,25 @@
 import React, { useRef, useState } from 'react'
 import "./login.css"
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
+import utilites from '../../assets/utilities/utilites.jsx'
 function Login() {
-    const navigate = useNavigate()
    
     const {user,error,handleChange,validateEmail,validatePassword}= usevalidate()
+    const {navigate}=utilites()
     const inputFields = [
         { type: 'text', name: 'email', label: 'Email' },
         { type: 'password', name: 'password', label: 'Password' }
     ]
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setUser(prevState => ({
-    //         ...prevState,
-    //         [name]: value
-    //     }));
-    // }
     const handleSubmit = (e) => {
         e.preventDefault();
-        let flag =true
-        if(!validateEmail(!user.email))
-        {   console.log("email",user.email)
-          flag= false;
+        validateEmail(user.email)
+        validatePassword(user.password)
+        if(validateEmail(user.email) && validatePassword(user.password))
+        {
+            navigate("/hero")
         }
-        if(!validatePassword(!user.password)){
-            flag= false;
-        }
-    
-        // navigate("/hero") 
     }
     return (
         <>
