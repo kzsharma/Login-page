@@ -19,9 +19,7 @@ function Login() {
     //     }));
     // }
     const handleSubmit = (e) => {
-        
         e.preventDefault();
-        let flag =true
         if(!validateEmail(user.email))
         {
           flag=false
