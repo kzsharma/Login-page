@@ -5,15 +5,16 @@ import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
 function SignUp() {
     const navigate = useNavigate();
-    const [user, setUser] = useState({
-        name: '',
-        userName: '',
-        email: '',
-        number: '',
-        password: '',
-        confirmPassword: ''
-    });
-    const [errors, setErrors] = useState({})
+    // const [user, setUser] = useState({
+    //     name: '',
+    //     userName: '',
+    //     email: '',
+    //     number: '',
+    //     password: '',
+    //     confirmPassword: ''
+    // });
+    // const [errors, setErrors] = useState({})
+    const {user,error,name,password,confirmPassword,number,validateConfirmPassword,handleChange,validateEmail,validatePassword,validateNumber,validateName,validateUsername}= usevalidate()
     const inputFields = [
         { type: 'text', name: 'name', label: 'Name' },
         { type: 'text', name: 'userName', label: 'User-Name' },
@@ -22,21 +23,26 @@ function SignUp() {
         { type: 'password', name: 'password', label: 'Password' },
         { type: 'password', name: 'confirmPassword', label: 'Confirm Password' }
     ];
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUser(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setUser(prevState => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }));
+    // };
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors({})
-        const validateErrors = usevalidate(user)
-        setErrors(validateErrors)
-        if (Object.keys(validateErrors).length === 0) {
-            navigate("/")
-        }
+        validatePassword(user.password)
+        validateName(user.name)
+        validateEmail(user.email)
+        validateConfirmPassword(user.confirmPassword)
+        validateNumber(user.number)
+        validateUsername(user.userName)
+        // const validateErrors = usevalidate(user)
+        // setErrors(validateErrors)
+        // if (Object.keys(validateErrors).length === 0) {
+        //     navigate("/")
+        // }
     }
     return (
         <>
@@ -61,7 +67,7 @@ function SignUp() {
                                     value={user[field.name]}
                                     onChange={handleChange}
                                     label={field.label}
-                                    error={errors[field.name]}
+                                    error={error[field.name]}
                                 />
                             ))}
                             <button

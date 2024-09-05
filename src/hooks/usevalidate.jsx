@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 
 function useValidate() {
-  
+
   const emailPattern = /\S+@\S+\.\S+/;
   const userNamePattern = /^[A-Za-z0-9_@./!$^*)(#&+-]*$/;
   const namePattern = /^[A-Za-z]+( [A-Za-z]+)?$/
@@ -29,10 +29,10 @@ function useValidate() {
       ...prevState,
       [name]: value
     }));
-    
+
   };
   const validateEmail = (email) => {
-    console.log("validate-email",email)
+    console.log("validate-email", email)
     if ((!emailPattern.test(email))) {
       setError(prevState => ({
         ...prevState,
@@ -43,28 +43,63 @@ function useValidate() {
     else
       return true
   };
-  const validatePassword =(password) =>{
-    if((!user.password) && (user.password.length < 8)){
-      setError(prevState =>({
-          ...prevState,
-          password:"Invalid Password"
+  const validatePassword = (password) => {
+    if (!password || password < 8) {
+      setError(prevState => ({
+        ...prevState,
+        password: "Invalid Password"
       }))
     }
   }
+  const validateUsername = (userName) => {
+    if (!userName || userName.length < 4 || !userNamePattern.test(userName)) {
+      setError(prevState => ({
+        ...prevState,
+        userName: "Invalid Username"
+      }))
+    }
+  }
+  const validateNumber = (Number) => {
+    if (!user.number || user.number.length < 10 || user.number.length > 12 || !numberPattern.test(user.number)) {
+      setError(prevState => ({
+        ...prevState,
+        number: "Invalid Number"
+      }))
+    }
+  }
+  const validateName = (name)=>{
+    if(!name || name.length < 4 || !namePattern.test(name)){
+      setError(prevState => ({
+        ...prevState,
+        name: "Invalid name"
+      }))
+    }
+  }
+  const validateConfirmPassword = (ConfirmPassword) => {
+    if (!user.confirmPassword && !user.password) {
+      setError(prevState => ({
+        ...prevState,
+        confirmPassword: "Invalid Password"
+      }))
+    }
+  }
+
+
   return {
     user,
     error,
     handleChange,
     validateEmail,
-    validatePassword
+    validatePassword,
+    validateName,
+    validateNumber,
+    validateUsername,
+    validateConfirmPassword
   }
 
 }
 export default useValidate
 
-// if (("email" in user) && (!emailPattern.test(user.email))) {
-//   error.email = "Invalid Email"
-// }
 // if (("password" in user) && ((!user.password) && (user.password.length < 8))) {
 //   error.password = "Invalid password"
 // }

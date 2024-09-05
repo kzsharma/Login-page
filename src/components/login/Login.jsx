@@ -20,15 +20,16 @@ function Login() {
     // }
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!validateEmail(user.email))
-        {
-          flag=false
+        let flag =true
+        if(!validateEmail(!user.email))
+        {   console.log("email",user.email)
+          flag= false;
         }
-        if(!validatePassword(user.password)){
-            flag= false
+        if(!validatePassword(!user.password)){
+            flag= false;
         }
-        if(flag)
-        navigate("/hero") 
+    
+        // navigate("/hero") 
     }
     return (
         <>
