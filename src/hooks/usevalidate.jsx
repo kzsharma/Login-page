@@ -29,7 +29,6 @@ function useValidate() {
       ...prevState,
       [name]: value
     }));
-
   };
   const validateEmail = (email) => {
     if ((!emailPattern.test(email))) {
