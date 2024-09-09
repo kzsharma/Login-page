@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import "./signUp.css"
 import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
-import utilites from '../../assets/utilities/utilites.jsx'
+import Navigator from '../../assets/utilities/Navigator.jsx'
 function SignUp() {
     const { user, error,
         validateConfirmPassword,
@@ -14,14 +14,14 @@ function SignUp() {
         validateUsername,
         validatePassAndUSer
     } = usevalidate()
-    const { navigate } = utilites()
+    const { navigate } = Navigator()
     const inputFields = [
-        { type: 'text', name: 'name', label: 'Name' },
-        { type: 'text', name: 'userName', label: 'User-Name' },
-        { type: 'text', name: 'email', label: 'Email' },
-        { type: 'text', name: 'number', label: 'Mobile Number' },
-        { type: 'password', name: 'password', label: 'Password' },
-        { type: 'password', name: 'confirmPassword', label: 'Confirm Password' }
+        { type: 'text', name: 'name', label: 'Name'},
+        { type: 'text', name: 'userName', label: 'User-Name'},
+        { type: 'text', name: 'email', label: 'Email'},
+        { type: 'text', name: 'number', label: 'Mobile Number'},
+        { type: 'password', name: 'password', label: 'Password'},
+        { type: 'password', name: 'confirmPassword', label: 'Confirm Password'}
     ];
     const handleSubmit = (e) => {
         e.preventDefault();

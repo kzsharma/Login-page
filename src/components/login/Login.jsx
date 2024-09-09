@@ -3,10 +3,10 @@ import "./login.css"
 import { Link } from 'react-router-dom'
 import Input from '../input/Input'
 import usevalidate from '../../hooks/useValidate.jsx'
-import utilites from '../../assets/utilities/utilites.jsx'
+import Navigator from '../../assets/utilities/Navigator.jsx'
 function Login() {
     const { user, error, handleChange, validateEmail, validatePassword } = usevalidate()
-    const { navigate } = utilites()
+    const { navigate } = Navigator()
     const inputFields = [
         { type: 'text', name: 'email', label: 'Email' },
         { type: 'password', name: 'password', label: 'Password' }
